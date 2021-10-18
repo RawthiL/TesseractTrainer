@@ -13,16 +13,16 @@ To build the image just do:
 - `docker build --build-arg UBUNTU_VERSION=20.04  -t tesseract_trainer:5.0  .`
 
 To fine tune your data execute:
-- <code>
-        docker run -u $UID:$UID \<br/>
-        -v &lt;host path to "Train_data">:/home/tesstrain/train_samples \<br/>
-        -v &lt;host path to "Validation_data">:/home/tesstrain/validation_samples \<br/>
-        -v &lt;host path to output directory>:/home/tesstrain/output   \<br/>
-        -it tesseract_trainer:5.0 \<br/>
-        &nbsp; &nbsp; &nbsp; &lt;"0" to process all .tiff and .box into .lstm or "1" to skip this if already done> \<br/>
-        &nbsp; &nbsp; &nbsp; &lt; The psm mode (default is 7) to detect text>\<br/>
-        &nbsp; &nbsp; &nbsp; &lt; Number of train iterations>
-    </code>
+- ```
+        docker run -u $UID:$UID \ 
+                -v <host path to "Train_data">:/home/tesstrain/train_samples \   
+                -v <host path to "Validation_data">:/home/tesstrain/validation_samples \
+                -v <host path to output directory>:/home/tesstrain/output   \ 
+                -it tesseract_trainer:5.0 \ 
+                                        <"0" to process all .tiff and .box into .lstm or "1" to skip this if already done> \ 
+                                        <The psm mode (default is 7) to detect text>\ 
+                                        <Number of train iterations>
+    ```
 
 For example in linux:
 
