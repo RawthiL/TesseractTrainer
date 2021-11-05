@@ -49,12 +49,12 @@ RUN mkdir validation_samples
 RUN mkdir output
 
 # Add scripts
-ADD convert2lstm.py .
-ADD do_train.sh .
+COPY convert2lstm.py .
+COPY do_train.sh .
 RUN chmod +x do_train.sh
 
 RUN chown tesstrain:tesstrain -R /home/tesstrain
-
+RUN apt-get install -y nano
 # Set user
 USER tesstrain
 
@@ -62,9 +62,9 @@ USER tesstrain
 ENTRYPOINT ["/bin/bash", "/home/tesstrain/do_train.sh"]
 # Set default parameters:
 # 0: Process all .tiff and .box into .lstm
-# 7: Use psm=7 to detect text 
-# 4000: Train for 4000 iterations
-CMD ["0", "7", "4000"]
+# 11: Use psm=11 to detect text 
+# 10000: Train for 10000 iterations
+CMD ["0", "11", "10000"]
 
 # Usage:
 # docker run -u $UID:$UID -v <host path to train samples>:/home/tesstrain/train_samples \
